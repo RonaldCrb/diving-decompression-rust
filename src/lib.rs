@@ -62,4 +62,47 @@
 #[macro_use]
 
 extern crate serde_derive;
+/// this module provides functionality for the US Navy dive tables
 pub mod tables;
+
+pub fn no_decompression_limit(depth: u16) -> u16 {
+  //! Returns the no decompression limit for any given depth
+  //! depth must be expressed in Feet of sea water
+  //! No decompression limit is returned in minutes 
+  
+  // no decompression table
+  let nodeco_table = tables::nodeco_table()
+    .expect("Error serializing the data withthe table deco_table");
+
+  let mut ndl: u16 = 0;  
+  for row in nodeco_table.table_data.iter() {
+    if row.min_fsw <= depth && depth <= row.max_fsw {
+      ndl = row.no_stop_limit
+    }
+  }
+  
+  return ndl;
+}
+
+pub fn group_letter(dive: tables::types::Dive) -> String {
+  //! Returns the repetitive group letter for any given dive. 
+  //! it takes the dive profile as a paramater
+  //! the depth is expressed in feet of sea water
+  //! the time is expressed in minutes
+
+  let nodeco_table = tables::nodeco_table()
+    .expect("Error serializing the data within the deco_table");
+
+  let mut gl: String = String::from("");
+  for row in nodeco_table.table_data.iter() {
+    if row.min_fsw <= dive.depth && dive.depth <= row.max_fsw {
+      for value in row.values.iter() {
+        if value.min_time <= dive.bottom_time && dive.bottom_time <= value.max_time {
+          gl = value.group_letter;
+        } 
+      }
+    }
+  }
+  
+  return gl;
+}

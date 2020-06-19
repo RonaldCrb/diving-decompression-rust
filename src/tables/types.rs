@@ -180,7 +180,7 @@ pub struct TableAirDeco {
 }
 
 /// single dive plan object
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Copy, Clone)]
 pub struct DivePlan {
   /// the depth of the first planned dive expressed in feet of sea water
   pub depth: u16,
@@ -193,7 +193,7 @@ pub struct DivePlan {
 }
 
 /// single dive object
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Copy, Clone)]
 pub struct Dive {
   /// depth of the dive expressed in feet of sea water
   pub depth: u16, 

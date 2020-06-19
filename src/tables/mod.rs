@@ -4,7 +4,8 @@ extern crate serde_json;
 use std::fs::File;
 use std::io::prelude::*;
 
-
+/// contains the types necesary to deserialize and serialize
+/// and operate with the US Navy dive tables
 pub mod types;
 
 
@@ -12,7 +13,7 @@ pub mod types;
 /// no-decompression table from rev7 of the US Navy dive manual. 
 pub fn nodeco_table() -> serde_json::Result<types::TableNdl> {
   let mut file = File::open("src/tables/JSON/usnavy-air-nodeco-rev7.json")
-                      .expect("Cant find US NAVY air no-decompression tables");
+  .expect("Cant find US NAVY air no-decompression tables");
   
   let mut contents = String::new();
 
