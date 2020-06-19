@@ -200,3 +200,25 @@ pub struct Dive {
   /// bottom time of the dive expressed in minutes
   pub bottom_time: u16,
 }
+
+impl Dive {
+  /// Instantiate a new Dive object
+  pub fn new(d: u16, bt: u16) -> Self {
+    Self {
+      depth: d,
+      bottom_time: bt,
+    }
+  }
+}
+
+impl DivePlan {
+  /// Instantiate a new Dive Plan object
+  pub fn new(d: u16, bt: u16, si: u16, ndd: u16) -> Self {
+    Self {
+      depth: d,
+      bottom_time: bt,
+      sit: si,
+      next_depth: ndd,
+    }
+  }
+}

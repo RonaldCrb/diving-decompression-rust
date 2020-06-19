@@ -89,7 +89,8 @@ pub fn group_letter(dive: tables::types::Dive) -> String {
   //! it takes the dive profile as a paramater
   //! the depth is expressed in feet of sea water
   //! the time is expressed in minutes
-
+  
+  // no decompression table
   let nodeco_table = tables::nodeco_table()
     .expect("Error serializing the data within the deco_table");
 
@@ -98,7 +99,7 @@ pub fn group_letter(dive: tables::types::Dive) -> String {
     if row.min_fsw <= dive.depth && dive.depth <= row.max_fsw {
       for value in row.values.iter() {
         if value.min_time <= dive.bottom_time && dive.bottom_time <= value.max_time {
-          gl = value.group_letter;
+          gl = String::from(&value.group_letter);
         } 
       }
     }
