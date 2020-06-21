@@ -1,6 +1,5 @@
-
 /// A specific item in one of the rows of the US Navy air no-decompression table
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Group {
   /// the repetitive group letter
   pub group_letter: String,
@@ -11,7 +10,7 @@ pub struct Group {
 }
 
 /// row in the air No Decompression table
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct RowNdl {
   /// the lower end of allowed depths for a specific
   /// row expressed in Feet of sea water
@@ -29,7 +28,7 @@ pub struct RowNdl {
 }
 
 /// This is the main type for the entire US NAVY air No decompression table 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct TableNdl {
   /// unique id for a table within the diving-decompression project.
   pub table_code: String,
@@ -39,8 +38,8 @@ pub struct TableNdl {
   pub table_data: Vec::<RowNdl>,
 }
 
-#[derive(Serialize, Deserialize)]
 /// a row of the table for surface interval time and repetitive letter
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct RowRgl {
   /// group letter before the surface interval time
   pub group_letter: String,
@@ -53,7 +52,7 @@ pub struct RowRgl {
 }
 
 /// the table for surface interval time and repetitive letter
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct TableRgl {
   /// represents a unique id for a table within the 
   /// diving-decompression project.
@@ -65,8 +64,8 @@ pub struct TableRgl {
   pub table_data: Vec::<RowRgl>,
 }
 
-#[derive(Serialize, Deserialize)]
 /// item in the row of the table for residual nitrogen time
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Rnt {
   /// the lower end of allowed depth for a specific RNT item
   /// expressed feet of sea water
@@ -78,8 +77,8 @@ pub struct Rnt {
   pub rnt: u16,
 }
 
-#[derive(Serialize, Deserialize)]
 /// a row in the table for residual nitrogen time
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct RowRnt {
   /// the repet group letter for the residual nitrogen time item
   pub repet_letter: String,
@@ -87,8 +86,8 @@ pub struct RowRnt {
   pub rnt: Vec::<Rnt>,
 }
 
-#[derive(Serialize, Deserialize)]
 /// the table for residual nitrogen time
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct TableRnt {
   /// represents a unique id for a table within the 
   /// diving-decompression project.
@@ -100,13 +99,13 @@ pub struct TableRnt {
   /// decompression limit and the profile has an unlimited
   /// no decompression limit in the no decompression table
   /// for shallower depths as per the US Navy dive manual
-  pub table_note9981: String,
+  pub table_note_9981: String,
   /// a row in the table for residual nitrogen time
   pub table_data: Vec::<RowRnt>,
 }
 
-#[derive(Serialize, Deserialize)]
 /// an item from a row of the table for air decompression
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct DecoStops {
   /// the nominal depth of a specific decompression stop
   /// expressed in feet of sea water
@@ -116,8 +115,8 @@ pub struct DecoStops {
   pub time: u16,
 }
 
-#[derive(Serialize, Deserialize)]
 /// a row in a depth of the air decompression
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct RowDeco {
   /// the lower end of allowed times for a specific row expressed in minutes
   pub min_time: u16,
@@ -153,8 +152,8 @@ pub struct RowDeco {
   pub o2_deco_stops: Vec::<DecoStops>,
 }
 
-#[derive(Serialize, Deserialize)]
 /// a depth in the air decompression table
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct DecoDepth {
   /// the lower end of allowed depth for a specific profile in the 
   /// air decompression tables expressed feet of sea water
@@ -167,7 +166,7 @@ pub struct DecoDepth {
 }
 
 /// the air decompression table
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct TableAirDeco {
   /// represents a unique id for a table within the 
   /// diving-decompression project.
@@ -180,7 +179,7 @@ pub struct TableAirDeco {
 }
 
 /// single dive plan object
-#[derive(Serialize, Deserialize, Copy, Clone)]
+#[derive(Serialize, Deserialize, Copy, Clone, Debug)]
 pub struct DivePlan {
   /// the depth of the first planned dive expressed in feet of sea water
   pub depth: u16,
@@ -193,7 +192,7 @@ pub struct DivePlan {
 }
 
 /// single dive object
-#[derive(Serialize, Deserialize, Copy, Clone)]
+#[derive(Serialize, Deserialize, Copy, Clone, Debug)]
 pub struct Dive {
   /// depth of the dive expressed in feet of sea water
   pub depth: u16, 
