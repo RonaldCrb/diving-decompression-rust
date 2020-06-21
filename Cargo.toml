@@ -3,8 +3,11 @@ name = "diving-decompression"
 version = "0.1.0"
 authors = ["Ron Alonzo"]
 edition = "2018"
+license = "GPL-3.0-or-later"
+keywords = ["diving", "decompression", "calculator"]
+categories = ["science"]
+description = "Calculate required diving decompression procedures using the US Navu dive tables rev7"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
 serde = "1.0"
 serde_json = "1.0"
