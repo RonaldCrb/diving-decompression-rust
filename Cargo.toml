@@ -6,7 +6,7 @@ edition = "2018"
 license = "GPL-3.0-or-later"
 keywords = ["diving", "decompression", "calculator"]
 categories = ["science"]
-description = "Calculate required diving decompression procedures using the US Navu dive tables rev7"
+description = "Calculate required diving decompression procedures using the US Navy dive tables rev7"
 exclude = [".vscode"]
 [dependencies]
 serde = "1.0"
