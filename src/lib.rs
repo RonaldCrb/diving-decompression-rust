@@ -51,14 +51,13 @@
 
 // Code conventions
 #![forbid(unsafe_code)]
-#![deny(non_upper_case_globals)]
-#![deny(non_camel_case_types)]
 #![deny(non_snake_case)]
-#![deny(unused_mut)]
-#![deny(dead_code)]
+#![deny(non_camel_case_types)]
+#![deny(non_upper_case_globals)]
 #![deny(unused_imports)]
+#![deny(unused_mut)]
 #![deny(missing_docs)]
-#![forbid(unsafe_code)]
+#![deny(dead_code)]
 #[macro_use]
 
 extern crate serde_derive;
