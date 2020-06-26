@@ -63,7 +63,7 @@
 extern crate serde_derive;
 
 /// this module provides functionality for the US Navy dive tables
-pub mod tables;
+pub mod airtables;
 
 /// single dive object
 #[derive(Serialize, Deserialize, Copy, Clone, Debug)]
@@ -106,8 +106,8 @@ impl Dive {
       return ndl;
     } 
 
-    let nodeco_table = tables::nodeco_table()
-      .expect("Error serializing the data withthe table deco_table");
+    let nodeco_table = airtables::nodeco_table()
+      .expect("Error serializing the data within the table nodeco_table");
 
     for row in nodeco_table.table_data.iter() {
       if row.min_fsw <= self.depth && self.depth <= row.max_fsw {
@@ -125,7 +125,7 @@ impl Dive {
     //! the group letter is returned as a String
     let mut gl: String = String::from("");
 
-    let nodeco_table = tables::nodeco_table()
+    let nodeco_table = airtables::nodeco_table()
       .expect("Error serializing the data within the deco_table");
 
     for row in nodeco_table.table_data.iter() {
@@ -155,15 +155,15 @@ impl Dive {
     return gl;
   }
 
-  pub fn deco_dive(self) -> tables::RowDeco {
+  pub fn deco_dive(self) -> airtables::RowDeco {
     //! returns the decompression profile of the Dive object. 
     //! the depth is expressed in feet of sea water
     //! the bottom_time is expressed in minutes
     //! the decompression profile is returned as a RowDeco struct
-    let deco_table = tables::deco_table()
+    let deco_table = airtables::deco_table()
       .expect("Error deserializing no decompression table");
 
-    let mut deco_profile: tables::RowDeco = tables::RowDeco {
+    let mut deco_profile: airtables::RowDeco = airtables::RowDeco {
       min_time: 0,
       max_time: 0,
       air_tat: String::from("0"),
@@ -228,7 +228,7 @@ impl DivePlan {
       return ndl;
     } 
 
-    let nodeco_table = tables::nodeco_table()
+    let nodeco_table = airtables::nodeco_table()
       .expect("Error serializing the data withthe table deco_table");
 
     for row in nodeco_table.table_data.iter() {
@@ -247,7 +247,7 @@ impl DivePlan {
     //! the group letter is returned as a String
     let mut gl: String = String::from("");
 
-    let nodeco_table = tables::nodeco_table()
+    let nodeco_table = airtables::nodeco_table()
       .expect("Error serializing the data within the deco_table");
 
     for row in nodeco_table.table_data.iter() {
@@ -281,10 +281,10 @@ impl DivePlan {
     //! the depth and next_dive_depth are expressed in feet of sea water
     //! the bottom_time and surface_interval_time are expressed in minutes
     //! the repetitive group letter is returned as a String
-    let nodeco_table = tables::nodeco_table()
+    let nodeco_table = airtables::nodeco_table()
       .expect("Error serializing the data within the deco_table");
 
-    let rgl_table = tables::rgl_table()
+    let rgl_table = airtables::rgl_table()
       .expect("there was an error deserializing deco table");
   
     let mut rl = String::new();
@@ -311,13 +311,13 @@ impl DivePlan {
     //! the depth and next_dive_depth are expressed in feet of sea water
     //! the bottom_time and surface_interval_time are expressed in minutes
     //! the residual nitrogen time is returned as a u16 integer
-    let nodeco_table = tables::nodeco_table()
+    let nodeco_table = airtables::nodeco_table()
       .expect("Error deserializing no decompression table");
 
-    let rgl_table = tables::rgl_table()
+    let rgl_table = airtables::rgl_table()
       .expect("Error deserializing repetitive group letter table");
 
-    let rnt_table = tables::rnt_table()
+    let rnt_table = airtables::rnt_table()
       .expect("Error deserializing residual nitrogen time table");
   
     let mut rnt = 0;

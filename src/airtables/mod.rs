@@ -182,18 +182,8 @@ pub struct TableAirDeco {
 }
 
 /// nodeco_table() returns a typed and serialized US Navy air 
-/// no-decompression table from rev7 of the US Navy dive manual. 
-pub fn nodeco_table() -> Result<TableNdl, String> {
-  let file = include_str!("JSON/usnavy-air-nodeco-rev7.json");
-  match serde_json::from_str(&file) {
-    Ok(v) => return v,
-    Err(e) => return Err(e.to_string()),
-  };
-}
-
-/// nodeco_table() returns a typed and serialized US Navy air 
 /// no-decompression table from rev7 of the US Navy dive manual.
-pub fn nodeco_table2() -> serde_json::Result<TableAirDeco> {
+pub fn nodeco_table() -> serde_json::Result<TableNdl> {
   let file = include_str!("JSON/usnavy-air-nodeco-rev7.json");
   let sertab = serde_json::from_str(&file); 
   return sertab;
