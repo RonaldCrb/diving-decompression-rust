@@ -64,6 +64,8 @@ extern crate serde_derive;
 
 /// this module provides functionality for the US Navy dive tables
 pub mod airtables;
+/// this module provides a unit test suite for the calculations
+pub mod tests;
 
 /// single dive object
 #[derive(Serialize, Deserialize, Copy, Clone, Debug)]
