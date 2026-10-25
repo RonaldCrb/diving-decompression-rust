@@ -7,7 +7,7 @@ Initially prototyped in TypeScript and ported to Rust to enforce strict compile-
 ## Features
 
 - **No-Decompression Limits & Group Letters (`Dive`):** Computes NDL (in minutes) and repetitive group designations up to 190 fsw.
-- **Decompression Stop Profiles (`Dive::deco_dive`):** Returns full U.S. Navy Rev 7 air and in-water/surface $\text{O}_2$ (`SurDO2`) decompression stop schedules, total ascent times (`TAT`), oxygen central nervous system toxicity periods (`o2cp`), and exceptional exposure flags.
+- **Decompression Stop Profiles (`Dive::deco_dive`):** Returns full U.S. Navy Rev 7 air and in-water/surface O₂ (`SurDO2`) decompression stop schedules, total ascent times (`TAT`), oxygen central nervous system toxicity periods (`o2cp`), and exceptional exposure flags.
 - **Repetitive Dive Planning (`DivePlan`):** Calculates post-surface-interval repetitive group letters and residual nitrogen time (`RNT`) for subsequent dives.
 
 ## Usage
